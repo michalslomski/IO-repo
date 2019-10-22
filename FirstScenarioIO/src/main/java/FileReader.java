@@ -58,17 +58,18 @@ public class FileReader {
         }
     }
 
+    /**
+     * @returns all files with ".java" extension in given path and it's subdirectories
+     */
     public List<File> getFileList() {
         return fileList;
     }
 
+    /**
+     * @returns returns folder where search begun
+     */
     public File getPrimaryDir() {
         return primaryDir;
     }
-
-    public static void main(String[] args) throws IOException {
-        new FileReader("D:\\Studia\\sem_5\\IO\\first_scenario\\FirstScenarioIO");
-    }
-
 
 }
