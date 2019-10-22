@@ -1,4 +1,4 @@
-/*
+/**
 Author: Marcin Plywacz
 Date: 22.10.2019
 */
@@ -33,13 +33,13 @@ public class FileReader {
             throw new IllegalArgumentException("given path should lead to directory ont file ");
         }
         primaryDir = tmpFile;
-        findAllJavaFilesInDepth();
+        findAllFilesInDepth();
     }
 
     /**
      * fills in fileList  with files that ends with DEMANDED_EXTENSION
      */
-    private void findAllJavaFilesInDepth() {
+    private void findAllFilesInDepth() {
         directoriesQueue.add(primaryDir);
         while (!directoriesQueue.isEmpty()) {
             File currentDir = directoriesQueue.remove();
