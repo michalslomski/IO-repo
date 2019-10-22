@@ -1,12 +1,11 @@
 /**
-Author: Marcin Plywacz
-Date: 22.10.2019
-*/
+ * Author: Marcin Plywacz
+ * Date: 22.10.2019
+ */
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -17,30 +16,21 @@ import java.util.Queue;
 public class FileReader {
     public static final String DEMANDED_EXTENSION = ".java";
 
-    private final List<File> fileList = new ArrayList<>();
     private final Queue<File> directoriesQueue = new LinkedList<>();
-    private final File primaryDir; //folder from where we start search for files and subdirectories
 
-    public FileReader(String primaryDirPath) throws IOException {
-        File tmpFile = new File(primaryDirPath);
-        if (!tmpFile.exists()) {
-            throw new FileNotFoundException("cannot load given directory");
-        }
-        else if (!tmpFile.canRead()) {
-            throw new IOException("cannot read directory");
-        }
-        else if (!tmpFile.isDirectory()) {
-            throw new IllegalArgumentException("given path should lead to directory ont file ");
-        }
-        primaryDir = tmpFile;
-        findAllFilesInDepth();
+    public FileReader() {
     }
 
     /**
-     * fills in fileList  with files that ends with DEMANDED_EXTENSION
+     * @param path path to dir to be scanned
+     * @return list of files with DEMANDED_EXCEPTIONS in baseDir and it's subdirectories
+     * @throws IOException when path is incorrect
      */
-    private void findAllFilesInDepth() {
-        directoriesQueue.add(primaryDir);
+    public List<File> findAllFilesInDepth(final String path) throws IOException {
+        File baseDir = this.getDir(path);
+        directoriesQueue.add(baseDir);
+
+        List<File> filesList = new LinkedList<>();
         while (!directoriesQueue.isEmpty()) {
             File currentDir = directoriesQueue.remove();
             File[] currentFiles = currentDir.listFiles();
@@ -52,24 +42,28 @@ public class FileReader {
                     directoriesQueue.add(file);
                 }
                 else if (file.getName().endsWith(DEMANDED_EXTENSION)) {
-                    fileList.add(file);
+                    filesList.add(file);
                 }
             }
         }
+        return filesList;
     }
 
     /**
-     * @returns all files with ".java" extension in given path and it's subdirectories
+     * checks if given path leads to directory
+     * * @throws IOException
      */
-    public List<File> getFileList() {
-        return fileList;
+    private File getDir(String path) throws IOException {
+        File tmpFile = new File(path);
+        if (!tmpFile.exists()) {
+            throw new FileNotFoundException(" given directory doesnt exist");
+        }
+        else if (!tmpFile.canRead()) {
+            throw new IOException("cannot read directory");
+        }
+        else if (!tmpFile.isDirectory()) {
+            throw new IllegalArgumentException("given path should lead to directory not file ");
+        }
+        return tmpFile;
     }
-
-    /**
-     * @returns returns folder where search begun
-     */
-    public File getPrimaryDir() {
-        return primaryDir;
-    }
-
 }
