@@ -29,7 +29,7 @@ public class FileParser {
         this.fileName = fileName;
     }
 
-    public List<String> getDependenciesList() {
+    public List<String> getImportList() {
         return importList;
     }
 
@@ -46,8 +46,8 @@ public class FileParser {
      * @param filename - method takes file as parametr
      * @throws IOException - throws exceptions when file is not found
      */
-    public void parsingFile(File filename) throws IOException {
-
+    public FileParser parsingFile(File filename) throws IOException {
+        FileParser fp = new FileParser();
         if(!filename.exists()){
             throw new FileNotFoundException("File doesn't exist");
         }
@@ -56,15 +56,16 @@ public class FileParser {
         }
 
         BufferedReader br = new BufferedReader(new FileReader(filename));
-        setFileName(filename.getName());
+        fp.setFileName(filename.getName());
         String st;
         String[] split;
         while ((st = br.readLine()) != null) {
             split = st.split(" ",2);
             if (st.contains("import"))
-                importList.add(split[1]);
+                fp.importList.add(split[1]);
         }
-        setSize(filename.length());
+        fp.setSize(filename.length());
+        return fp;
     }
 
 }
