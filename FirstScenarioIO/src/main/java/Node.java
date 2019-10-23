@@ -2,9 +2,8 @@ import java.io.File;
 import java.util.HashMap;
 
 public class Node {
-    int fileSize;               //gdzieś trzeba uzupełnić to pole
-								//double bytes = file.length();
+    long fileSize;               			//pobrać z FileParser
     File file;
-    HashMap<String,Integer> connectionsWeights;     //key: className, value: weight of connection
+    HashMap<String,Integer> connectionsWeights;    	//key: className, value: weight of connection
 
 }
