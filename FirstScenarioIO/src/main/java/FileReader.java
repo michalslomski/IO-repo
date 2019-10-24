@@ -6,9 +6,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
 
 /***
  * Reads all files  with DEMANDED_EXTENSION from given directory and it's subdirectories
@@ -23,7 +25,7 @@ public class FileReader {
 
     /**
      * @param path path to dir to be scanned
-     * @return list of files with DEMANDED_EXCEPTIONS in baseDir and it's subdirectories
+     * @return list of files with DEMANDED_EXTENSION in baseDir and it's subdirectories
      * @throws IOException when path is incorrect
      */
     public List<File> findAllFilesInDepth(final String path) throws IOException {
@@ -65,5 +67,30 @@ public class FileReader {
             throw new IllegalArgumentException("given path should lead to directory not file ");
         }
         return tmpFile;
+    }
+    /*
+    Zwraca listę klas które są w naszym projekcie np:
+    DependenciesCounter.java
+    "FileParser.java",
+    "FileReader.java",
+    "Node.java"
+     */
+    public List<String> getAllClassesNamesInsideProject(String path) throws IOException {
+        List<File> filesList = findAllFilesInDepth(path);
+
+        List<String>projectClassList = new ArrayList<>();
+        filesList.forEach(file -> {
+            projectClassList.add(file.getName());
+        });
+
+        return projectClassList;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FileReader fr=new FileReader();
+       fr.findAllFilesInDepth(
+               "D:\\Studia\\sem_5\\IO\\first_scenario\\FirstScenarioIO\\src\\main\\java\\com\\exmaple").forEach(System.out::println);
+       fr.getAllClassesNamesInsideProject(
+               "D:\\Studia\\sem_5\\IO\\first_scenario\\FirstScenarioIO\\src\\main\\java\\com\\exmaple").forEach(System.out::println);
     }
 }
