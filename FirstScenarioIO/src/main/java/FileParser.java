@@ -57,15 +57,18 @@ public class FileParser {
 
         BufferedReader br = new BufferedReader(new FileReader(filename));
         fp.setFileName(filename.getName());
+        fp.setSize(filename.length());
+
         String st;
         String[] split;
         while ((st = br.readLine()) != null) {
             split = st.split(" ",2);
             if (st.contains("import"))
-                fp.importList.add(split[1]);
+                if(!split[1].contains("*"))
+                    fp.importList.add(split[1]);
         }
 
-        fp.setSize(filename.length());
+
 
         /**
          * Zwraca obiekt typu FileParser w którym zawarte są pola:
