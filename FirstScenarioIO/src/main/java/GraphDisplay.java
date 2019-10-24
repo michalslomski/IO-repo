@@ -7,6 +7,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+// To correctly use simple GUI that displays an image, give the direct path to an image
+// Example call of function in main() : GraphFrame graf = new GraphFrame();
+
 public class GraphDisplay extends JPanel implements ActionListener {
 
     private BufferedImage image;
