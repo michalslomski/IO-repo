@@ -64,7 +64,7 @@ public class FileParser {
         while ((st = br.readLine()) != null) {
             split = st.split(" ",2);
             if (st.contains("import"))
-                if(!split[1].contains("*"))
+                if(!split[1].contains("*") && !split[1].contains("import"))
                     fp.importList.add(split[1]);
         }
 
