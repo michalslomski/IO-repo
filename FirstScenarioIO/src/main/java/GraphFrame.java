@@ -6,7 +6,7 @@ public class GraphFrame extends JFrame{
     public GraphFrame(){
 //        super("Graph Viever");
 //
-//        JPanel display = new GraphPanel(this);
+//        JPanel display = new GraphDisplay(this);
 //        display.setSize(600,600);
 //        add(display);
 //
