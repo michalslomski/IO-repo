@@ -29,10 +29,11 @@ public class DependenciesCounter {
         for (String str : classesNamesList) {
             int depsFound = 0;
             String[] split = str.split("\\.");
-            String lastOne = split[split.length - 1];
-
+            String searchingName = split[split.length - 1];
+            if(searchingName.equals("java"))
+                searchingName= split[0];
             try {
-                depsFound = findDependencies(file, lastOne);
+                depsFound = findDependencies(file, searchingName);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -49,6 +50,8 @@ public class DependenciesCounter {
     int findDependencies(File file, String className) throws FileNotFoundException {
 
         int dependenciesFound=0;
+	String[] split = className.split(";");
+        className = split[0];
         String phrase=className;
 
         Scanner fileScanner = new Scanner(file);
