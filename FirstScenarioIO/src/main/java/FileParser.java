@@ -64,7 +64,15 @@ public class FileParser {
             if (st.contains("import"))
                 fp.importList.add(split[1]);
         }
+
         fp.setSize(filename.length());
+
+        /**
+         * Zwraca obiekt typu FileParser w którym zawarte są pola:
+         * String nazwa_pliku
+         * ArrayList<String> lista importowanych klas
+         * long rozmiar_pliku
+         */
         return fp;
     }
 
