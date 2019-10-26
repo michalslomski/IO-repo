@@ -2,8 +2,8 @@ import java.io.File;
 import java.util.HashMap;
 
 public class Node {
-    long fileSize;               			//pobrać z FileParser
-    File file;
-    HashMap<String,Integer> connectionsWeights;    	//key: className, value: weight of connection
-
+    long fileSize;
+    File file;                                  //file.getName() to sourceFileName w grafie
+    HashMap<String,Integer> dependencies;       //key: targetFileName, value: weight of connection
+                                                //zawiera wszystkie zależności jakie znaleziono dla pliku file
 }
