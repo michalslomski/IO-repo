@@ -79,4 +79,27 @@ public class FileParser {
         return fp;
     }
 
+    //zmodyfikowana funkcja by od razu zwracała listę(poprzednią zachowałem, jest wyżej), tylko jej użyłem z tego pliku
+    public List<String> parseFile(File filename) throws IOException {
+        if(!filename.exists()){
+            throw new FileNotFoundException("File doesn't exist");
+        }
+        if(!filename.canRead()){
+            throw new IOException("Cannot read file");
+        }
+
+        BufferedReader br = new BufferedReader(new FileReader(filename));
+        //fp.setFileName(filename.getName());
+        List<String> dependenciesList = new ArrayList<>();
+        String st;
+        String[] split;
+        while ((st = br.readLine()) != null) {
+            split = st.split(" ",2);
+            if (st.contains("import")) {
+                if (!split[1].contains("*") && !split[1].contains("import"))
+                    dependenciesList.add(split[1]);
+            }
+        }
+        return dependenciesList;
+    }
 }
