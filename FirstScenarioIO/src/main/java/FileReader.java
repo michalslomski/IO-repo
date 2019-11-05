@@ -85,12 +85,4 @@ public class FileReader {
 
         return projectClassList;
     }
-
-    public static void main(String[] args) throws IOException {
-        FileReader fr=new FileReader();
-       fr.findAllFilesInDepth(
-               "D:\\Studia\\sem_5\\IO\\first_scenario\\FirstScenarioIO\\src\\main\\java\\com\\exmaple").forEach(System.out::println);
-       fr.getAllClassesNamesInsideProject(
-               "D:\\Studia\\sem_5\\IO\\first_scenario\\FirstScenarioIO\\src\\main\\java\\com\\exmaple").forEach(System.out::println);
-    }
 }
