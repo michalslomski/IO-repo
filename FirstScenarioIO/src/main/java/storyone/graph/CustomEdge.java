@@ -1,3 +1,4 @@
+package storyone.graph;
 
 import org.jgrapht.graph.DefaultEdge;
 //potrzebne bo inaczej nie wyświetlało wag

@@ -1,4 +1,4 @@
-/**
+package storyone.fileoperations; /**
  *  Author: Damian Rodziewicz
  *  Data :  23.10.2019
  */
@@ -71,7 +71,7 @@ public class FileParser {
 
 
         /**
-         * Zwraca obiekt typu FileParser w którym zawarte są pola:
+         * Zwraca obiekt typu storyone.fileoperations.FileParser w którym zawarte są pola:
          * String nazwa_pliku
          * ArrayList<String> lista importowanych klas
          * long rozmiar_pliku

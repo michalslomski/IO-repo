@@ -1,4 +1,4 @@
-/**
+package storyone.fileoperations; /**
  * Author: Marcin Plywacz
  * Date: 22.10.2019
  */
@@ -70,10 +70,10 @@ public class FileReader {
     }
     /*
     Zwraca listę klas które są w naszym projekcie np:
-    DependenciesCounter.java
-    "FileParser.java",
-    "FileReader.java",
-    "Node.java"
+    storyone.fileoperations.DependenciesCounter.java
+    "storyone.fileoperations.FileParser.java",
+    "storyone.fileoperations.FileReader.java",
+    "storyone.graph.Node.java"
      */
     public List<String> getAllClassesNamesInsideProject(String path) throws IOException {
         List<File> filesList = findAllFilesInDepth(path);
