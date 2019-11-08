@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="org.jgraph:jgraph:5.12.4" type="repository">
+    <properties maven-id="org.jgraph:jgraph:5.12.4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jgraph/jgraph/5.12.4/jgraph-5.12.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
