@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class StoryOne {
 
-  public static void run() throws IOException {
+  public static void runFirstStory() throws IOException {
 
       Map<String,String> map = new HashMap<>();
       DependenciesCounter dependenciesCounter = new DependenciesCounter();

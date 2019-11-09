@@ -1,40 +1,68 @@
 package storythree;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
-import java.lang.Object;
-
-import static java.util.stream.Collectors.toList;
-
-/***
- *  Change "src\\main" to your directory with project
- *  Class returns set with name of packages in project
+/**
+ * Author: Michal Slomski
+ * Date: 09.11.2019
  */
 
+import storyone.fileoperations.FileReader;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+
+
 public class PackageReader {
-    public Set<String> getPackages() {
 
-        Set<String> packages=new HashSet<>();
-        listOfPackage("src\\main",packages);
+    /**
+     * Method creates list of DependencyObjects with packages names and
+     * method names with its packages names.
+     *
+     *
+     * @return list of DependencyObjects. See DependencyObject class
+     */
 
-        return packages;
-    }
+    public List<DependencyObject> packageDependency() throws IOException {
 
-    public static void listOfPackage(String directoryName, Set<String> pack) {
-        File directory = new File(directoryName);
+        Map<String,String> map;
+        List<DependencyObject> objectList = new ArrayList<>();
+        MethodBodyFinder mbf = new MethodBodyFinder();
+        BufferedReader bf;
+        List<File> listOfFiles;
+        FileReader fileReader = new FileReader();
+        String projectPath=System.getProperty("user.dir");
 
-        // get all the files from a directory
-        File[] fList = directory.listFiles();
-        for (File file : fList) {
-            if (file.isFile()) {
-                String path=file.getPath();
-                String packName=path.substring(path.indexOf("src")+4, path.lastIndexOf('\\'));
-                pack.add(packName.replace('\\', '.'));
-            } else if (file.isDirectory()) {
+        listOfFiles=fileReader.findAllFilesInDepth(projectPath+"\\src\\main\\java");
+        String tmp = " ";
 
-                listOfPackage(file.getAbsolutePath(), pack);
+        for(File nameOfFile: listOfFiles){
+
+            DependencyObject obj;
+            bf= new BufferedReader(new java.io.FileReader(nameOfFile));
+            String [] split;
+            String firstLine;
+            firstLine= bf.readLine();
+            split= firstLine.split(" ");
+            String packageName=split[1].split(";")[0];
+            obj= new DependencyObject(packageName ,"");
+
+
+            if(!obj.getPackageName().contains(tmp))
+                objectList.add(obj);
+
+            map=mbf.getMethodsBodies(nameOfFile.toString());
+            for(String key: map.keySet()){
+                obj= new DependencyObject(packageName,key);
+                objectList.add(obj);
             }
+            tmp=obj.getPackageName();
+
         }
+
+        return objectList;
     }
 }

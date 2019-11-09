@@ -1,9 +1,9 @@
+package storytwo.methdependencies;
+
 /**
  * Author: Marcin Plywacz
  * Date: 07.11.2019
  */
-
-package storytwo.methdependencies;
 
 import java.util.HashMap;
 import java.util.Map;

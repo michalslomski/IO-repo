@@ -1,10 +1,10 @@
+package storytwo.methdependencies;
+
 /**
  * Author: Marcin Plywacz
  * Date: 07.11.2019
  */
 
-
-package storytwo.methdependencies;
 
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;

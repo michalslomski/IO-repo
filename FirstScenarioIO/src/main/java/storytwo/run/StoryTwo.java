@@ -2,7 +2,7 @@ package storytwo.run;
 
 public class StoryTwo {
 
-    public static void run(){
+    public static void runSecondStory(){
 
     }
 }

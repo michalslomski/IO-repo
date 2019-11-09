@@ -1,6 +1,6 @@
-import storyone.run.StoryOne;
+package mainpackage;
+
 import storythree.run.StoryThree;
-import storytwo.run.StoryTwo;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        //StoryOne.run();
-      //  StoryTwo.run();
-        StoryThree.run();
+        //StoryOne.runFirstStory();
+        //StoryTwo.runFirstStory();
+        StoryThree.runThirdStory();
     }
 }
