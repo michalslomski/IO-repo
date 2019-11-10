@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
 public class MethodDependenciesFinder {
     /**
      * Method scans given directory for classes and finds every method
@@ -69,7 +68,6 @@ public class MethodDependenciesFinder {
             });
             methodDependencies.add(methodDep);
         });
-
 
         return methodDependencies;
     }

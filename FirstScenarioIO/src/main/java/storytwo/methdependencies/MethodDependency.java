@@ -39,9 +39,8 @@ public class MethodDependency {
         dependencyMap.merge(dependency, 1, Integer::sum);
         //above code does the same as below code
 //        Integer count = dependencyMap.get(dependency);
-//        if (count == null) {
+//        if (count == null)
 //            dependencyMap.put(dependency, 1);
-//        }
 //        else
 //            dependencyMap.put(dependency, count + 1);1
 

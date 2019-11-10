@@ -1,7 +1,11 @@
 package storythree;
 
+/**
+ * Author: Marcin Plywacz
+ * Date: 07.11.2019
+ */
+
 import com.github.javaparser.JavaParser;
-import com.github.javaparser.ParseException;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
