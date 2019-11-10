@@ -21,7 +21,7 @@ public class PackageDependencyFinder {
      * @throws IOException
      */
 
-    public List<DependencyObject> main(List<DependencyObject> listOfDependencyObjects) throws IOException {
+    public List<DependencyObject> packageDependencyFinder(List<DependencyObject> listOfDependencyObjects) throws IOException {
         PackageReader pr = new PackageReader();
         storyone.fileoperations.FileReader fr = new FileReader();
         MethodBodyFinder mbf = new MethodBodyFinder();
