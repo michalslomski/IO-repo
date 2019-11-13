@@ -34,7 +34,7 @@ public class MethodBodyFinder {
         CompilationUnit cu = null;
 
         try (FileInputStream in = new FileInputStream(javaFilePath)) {
-            cu = JavaParser.parse(in);
+           // cu = JavaParser.parse(in); zakomentowałem to bo nie kompilował mi się program :((
         }
         MethodVisitor mv = new MethodVisitor();
         mv.visit(cu, null);
