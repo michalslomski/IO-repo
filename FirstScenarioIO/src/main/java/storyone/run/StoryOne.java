@@ -26,7 +26,6 @@ public class StoryOne {
 
   public static void runFirstStory() throws IOException {
 
-      Map<String,String> map = new HashMap<>();
       DependenciesCounter dependenciesCounter = new DependenciesCounter();
       FileReader fileReader = new FileReader();
       FileParser fileParser = new FileParser();
@@ -34,7 +33,7 @@ public class StoryOne {
       List<Node> nodeList= new ArrayList<>();
 
       String projectPath = System.getProperty("user.dir");            //Project path
-      String path = projectPath+"\\src\\main\\";                      //lokalizacja plikow projektu
+      String path = projectPath+"\\src\\main\\storyone";                      //lokalizacja plikow projektu
       fileList=fileReader.findAllFilesInDepth(path);
 
       //tworzenie listy Nodów, rozmiar jest równy liczbie plików w projekcie
@@ -60,22 +59,20 @@ public class StoryOne {
           nodeList.add(n);
       }
 
-      GraphMaker g = new GraphMaker();   //zmienic na graphmaker
-
-
-
-      DirectedWeightedMultigraph<String, CustomEdge> graf = g.makeGraph(nodeList);
+      GraphMaker g = new GraphMaker();  
+      DirectedWeightedMultigraph<CustomVertex, CustomEdge> graf = g.makeGraph(nodeList);
 
       //tworzenie grafu w pliku
-      //tu może da się coś zmienić żeby lepiej wyglądał graf
-      File imgFile = new File(projectPath+"\\src\\main\\resources\\graf.png");            //lokalizacja stworzonego grafu
+      File imgFile = new File(projectPath+"\\src\\main\\resources\\graf1.png");            //lokalizacja stworzonego grafu
 
-      JGraphXAdapter<String, CustomEdge> graphAdapter = new JGraphXAdapter<>(graf);
-
-      mxIGraphLayout layout = new mxHierarchicalLayout(graphAdapter);
+      JGraphXAdapter<CustomVertex, CustomEdge> graphAdapter = new JGraphXAdapter<>(graf);
+      mxHierarchicalLayout layout = new mxHierarchicalLayout(graphAdapter);
+      //ustawienia wyświetlanego grafu
+      layout.setIntraCellSpacing(10);
+      layout.setInterRankCellSpacing(280);
       layout.execute(graphAdapter.getDefaultParent());
 
-      BufferedImage img = mxCellRenderer.createBufferedImage(graphAdapter, null, 2, Color.WHITE, true, null);
+      BufferedImage img = mxCellRenderer.createBufferedImage(graphAdapter, null, 1.4, Color.WHITE, true, null);
       ImageIO.write(img, "PNG", imgFile);
 
   }
