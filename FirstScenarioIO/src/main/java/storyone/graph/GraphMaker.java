@@ -9,7 +9,7 @@ public class GraphMaker {
      private HashMap<String,String> vertexMap= new HashMap<>();          //mapa unikalnych, niepowtarzających się węzłów/wierzchołków grafu
   
     //https://stackoverflow.com/questions/20246409/how-to-include-weight-in-edge-of-graph           , stąd wiadomo jak można robic graf
-    public DirectedWeightedMultigraph<String, CustomEdge> makeGraph(List<Node> sourceVertexList) {
+    public DirectedWeightedMultigraph<CustomVertex, CustomEdge> makeGraph(List<Node> sourceVertexList) {
         DirectedWeightedMultigraph<CustomVertex, CustomEdge> graph = new DirectedWeightedMultigraph<CustomVertex, CustomEdge>(CustomEdge.class);
 
         //uzupełnianie vertexMap
