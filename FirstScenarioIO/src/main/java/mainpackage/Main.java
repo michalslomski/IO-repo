@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         //StoryOne.runFirstStory();
-        //StoryTwo.runFirstStory();
+        //StoryTwo.runSecondStory();
         StoryThree.runThirdStory();
     }
 }

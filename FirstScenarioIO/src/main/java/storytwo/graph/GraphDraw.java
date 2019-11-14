@@ -4,48 +4,49 @@ import org.jgrapht.graph.DirectedWeightedMultigraph;
 import storytwo.graph.CustomEdge;
 import storytwo.graph.NodeFunction;
 
+import java.util.HashMap;
 import java.util.List;
-
-//TODO: add counter(vertex weight) which counts how many times particular function is called in program
+import java.util.Objects;
 
 public class GraphDraw {
+    private HashMap<String,String> vertexesMap= new HashMap<>();
 
-
-    public DirectedWeightedMultigraph<String, CustomEdge> graphDraw (List<NodeFunction> functionsList) { // graphDraw() adds vertexes and weights
+    public DirectedWeightedMultigraph<CustomVertex, CustomEdge> graphDraw (List<NodeFunction> functionsList) { // graphDraw() adds vertexes and weights
                                                                                                          // between them and returns a graph
+        DirectedWeightedMultigraph<CustomVertex, CustomEdge> graph = new DirectedWeightedMultigraph<CustomVertex, CustomEdge>(CustomEdge.class);
 
-        DirectedWeightedMultigraph<String, CustomEdge> graph = new DirectedWeightedMultigraph<String, CustomEdge>(CustomEdge.class);
+        for( NodeFunction function : functionsList) {                //adding functions names and their weights as vertexes to vertexesMap
+            vertexesMap.put(function.getFunctionName(), Objects.toString(function.getCallingsCounter()));
+            int index = 0;                                               //variable which allows to find imported function and establish its weight
 
-        for(int i=0; i<functionsList.size();i++) {                //adding functions names as vertexes
-            NodeFunction nodeFunction = functionsList.get(i);
-            String nodeFunctionName = nodeFunction.getFunctionName();
-
-            graph.addVertex(nodeFunctionName);
-
-
-            for (Object key : nodeFunction.getFunctions().keySet().toArray()) { //adding functions names for functions which are imported
-                if (!graph.containsVertex(key.toString()))
-                    graph.addVertex(key.toString());            
+            for (Object key : function.getFunctions().keySet().toArray()) { //adding functions names and their weights for functions which are imported
+                index++;                                                       // variable increments to find a proper function
+                if (!vertexesMap.containsKey(key.toString())) {
+                   NodeFunction temp = functionsList.get(index);
+                   vertexesMap.put(key.toString(),Objects.toString(temp.getCallingsCounter()));}
             }
         }
 
+        for (String key :vertexesMap.keySet()) {
+            CustomVertex Vertex = new CustomVertex(key,vertexesMap.get(key)); // adding vertexes to graph (function name and its weight)
+            graph.addVertex(Vertex);
+        }
 
         for (int i = 0; i < functionsList.size(); i++) {     
             NodeFunction nodeFunction = functionsList.get(i);
-            String nodeFunctionName = nodeFunction.getFunctionName();
+            CustomVertex Vortex = new CustomVertex(nodeFunction.getFunctionName(),Objects.toString(nodeFunction.getCallingsCounter())); // vortex which edge starts from
 
-            for (Object key : nodeFunction.getFunctions().keySet().toArray()) { //creating
-                String targetVortex = key.toString();
-                Integer weight = nodeFunction.getFunctions().get(targetVortex);
+            for (String functionName : nodeFunction.getFunctions().keySet()) {
+               CustomVertex targetVortex = new CustomVertex(functionName,vertexesMap.get(functionName)); // vortex which edge leads to
+                Integer weight = nodeFunction.getFunctions().get(functionName);  // establishing weights of edges
 
-                if (!nodeFunctionName.equals(targetVortex) && weight != 0) {
-                    graph.addEdge(nodeFunctionName, targetVortex, new storytwo.graph.CustomEdge(weight.toString()));
+                if (!Vortex.equals(targetVortex) && weight != 0) {
+                    graph.addEdge(Vortex, targetVortex, new CustomEdge(weight.toString())); // final edges adding
                 }
             }
         }
 
-
         return graph;
-        }
     }
+}
 
