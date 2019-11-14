@@ -31,8 +31,7 @@ public class MethodDependenciesFinder {
      * @param dirPath path to directory to be scanned
      * @return list of dependencies. See MethodDependency class
      */
-    //todo add class name to method name for example MethodDependency.toString()
-    //todo count how many methods that are declared in dirPath are called
+
     public List<MethodDependency> getMethodDependencies(String dirPath) {
         //root is folder where we start scanning for classes
         SourceRoot root = new SourceRoot(Paths.get(dirPath));
@@ -67,7 +66,8 @@ public class MethodDependenciesFinder {
                     MethodDeclaration methodDeclaration = (MethodDeclaration) bodyDeclaration;
                     className.append(methodDeclaration.getNameAsString());
 
-                    MethodDependency methodDep = new MethodDependency(className.toString());
+                    MethodDependency methodDep = new MethodDependency(
+                            className.toString());
                     methodDep.setMethodDeclaration(methodDeclaration);
                     methodsDefinedInsidePath.add(methodDep);
                 }
@@ -77,7 +77,7 @@ public class MethodDependenciesFinder {
         List<MethodDependency> methodDependencies = new LinkedList<>();
         //for every method from root folder extract every called method and add to dependencies list
         methodsDefinedInsidePath.forEach(outsideMethod -> {
-            MethodDependency methodDep = new MethodDependency(outsideMethod.getCallingMethodName());
+            MethodDependency methodDep = new MethodDependency(outsideMethod.getCallingMethodFullName());
 
             outsideMethod.getMethodDeclaration().walk(MethodCallExpr.class, methodInside -> {
                 methodDep.addDependency(methodInside.getNameAsString());
@@ -85,6 +85,35 @@ public class MethodDependenciesFinder {
             methodDependencies.add(methodDep);
         });
 
+        //go through all inside methods, and make weights
+        methodsDefinedInsidePath.forEach(outsideMethod -> {
+            outsideMethod.getMethodDeclaration().walk(MethodCallExpr.class, methodInside -> {
+               makeWeights(methodsDefinedInsidePath, methodDependencies, methodInside);
+            });
+        });
+
         return methodDependencies;
+    }
+
+    //checks if inside method is one of methods defined in path if so increment appropriate weight
+    private void makeWeights(List<MethodDependency> methodsDefinedInPath,
+                             List<MethodDependency> methodDependencies,
+                             MethodCallExpr insideMethod) {
+
+
+        methodsDefinedInPath.forEach(definedMethod -> {
+            //if inside method is one of declared method
+            if (definedMethod.getShortName().equals(insideMethod.getNameAsString())) {
+                //then find that declared method in dependencies list and increment it's weight
+                methodDependencies.forEach(methodDependency -> {
+                    if (methodDependency.getShortName().equals(insideMethod.getNameAsString())){
+                        methodDependency.incrementWeight();
+                    }
+
+                });
+            }
+
+        });
+
     }
 }

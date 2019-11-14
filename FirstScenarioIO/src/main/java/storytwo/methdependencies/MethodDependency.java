@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /*
- * callingMethodName : nazwa metody dla ktorej ta klasa zawiera zaleznosci
+ * callingMethodFullName : nazwa metody dla ktorej ta klasa zawiera zaleznosci
  * dependencyMap: mapa ktora zawiera nazwy wywolanych metod jako klucze,
  *  liczbe razy jako wartosci
  *
@@ -22,12 +22,12 @@ public class MethodDependency {
     /**
      * contains name of method to which belongs dependencies
      */
-    private String callingMethodName;
-    private Integer weight;
-    MethodDeclaration methodDeclaration;
+    private String callingMethodFullName;
+    private Integer weight=0;
+    private MethodDeclaration methodDeclaration;
     /**
      * contains dependencies for calling method,
-     * keys are names of called methods from callingMethodName's body
+     * keys are names of called methods from callingMethodFullName's body
      * values are numbers meaning how many times
      * <p>
      * format of the dependencyMap:
@@ -35,24 +35,32 @@ public class MethodDependency {
      */
     private Map<String, Integer> dependencyMap = new HashMap<>();
 
-    public MethodDependency(String methodName) {
-        this.callingMethodName = methodName;
+    public MethodDependency(String callingMethodFullName) {
+        this.callingMethodFullName = callingMethodFullName;
     }
 
     public void addDependency(String dependency) {
         dependencyMap.merge(dependency, 1, Integer::sum);
     }
+    void incrementWeight() {
+        this.weight++;
+    }
 
-    public String getCallingMethodName() {
-        return callingMethodName;
+    public String getCallingMethodFullName() {
+        return callingMethodFullName;
     }
 
     public Map<String, Integer> getDependencyMap() {
         return dependencyMap;
     }
 
-    public void setCallingMethodName(String callingMethodName) {
-        this.callingMethodName = callingMethodName;
+    public String getShortName(){
+        int index=callingMethodFullName.lastIndexOf('.');
+        return callingMethodFullName.substring(index+1);
+    }
+
+    public void setCallingMethodFullName(String callingMethodFullName) {
+        this.callingMethodFullName = callingMethodFullName;
     }
 
     public Integer getWeight() {
@@ -78,10 +86,9 @@ public class MethodDependency {
     @Override
     public String toString() {
         return "MethodDependency{" +
-                "callingMethodName='" + callingMethodName + '\'' +
+                "callingMethodFullName='" + callingMethodFullName + '\'' +
                 ", dependencyMap=" + dependencyMap +
                 '}';
     }
-
 
 }
