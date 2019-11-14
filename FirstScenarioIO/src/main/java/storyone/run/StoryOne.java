@@ -9,6 +9,7 @@ import storyone.fileoperations.DependenciesCounter;
 import storyone.fileoperations.FileParser;
 import storyone.fileoperations.FileReader;
 import storyone.graph.CustomEdge;
+import storyone.graph.CustomVertex;
 import storyone.graph.GraphMaker;
 import storyone.graph.Node;
 
@@ -33,7 +34,7 @@ public class StoryOne {
       List<Node> nodeList= new ArrayList<>();
 
       String projectPath = System.getProperty("user.dir");            //Project path
-      String path = projectPath+"\\src\\main\\storyone";                      //lokalizacja plikow projektu
+      String path = projectPath+"\\src\\main\\java\\storyone";                      //lokalizacja plikow projektu
       fileList=fileReader.findAllFilesInDepth(path);
 
       //tworzenie listy Nodów, rozmiar jest równy liczbie plików w projekcie
