@@ -5,6 +5,8 @@ package storytwo.methdependencies;
  * Date: 07.11.2019
  */
 
+import com.github.javaparser.ast.body.MethodDeclaration;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +23,8 @@ public class MethodDependency {
      * contains name of method to which belongs dependencies
      */
     private String callingMethodName;
+    private Integer weight;
+    MethodDeclaration methodDeclaration;
     /**
      * contains dependencies for calling method,
      * keys are names of called methods from callingMethodName's body
@@ -37,20 +41,38 @@ public class MethodDependency {
 
     public void addDependency(String dependency) {
         dependencyMap.merge(dependency, 1, Integer::sum);
-        //above code does the same as below code
-//        Integer count = dependencyMap.get(dependency);
-//        if (count == null)
-//            dependencyMap.put(dependency, 1);
-//        else
-//            dependencyMap.put(dependency, count + 1);1
-
     }
+
     public String getCallingMethodName() {
         return callingMethodName;
     }
 
     public Map<String, Integer> getDependencyMap() {
         return dependencyMap;
+    }
+
+    public void setCallingMethodName(String callingMethodName) {
+        this.callingMethodName = callingMethodName;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
+    public MethodDeclaration getMethodDeclaration() {
+        return methodDeclaration;
+    }
+
+    public void setMethodDeclaration(MethodDeclaration methodDeclaration) {
+        this.methodDeclaration = methodDeclaration;
+    }
+
+    public void setDependencyMap(Map<String, Integer> dependencyMap) {
+        this.dependencyMap = dependencyMap;
     }
 
     @Override

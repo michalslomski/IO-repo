@@ -9,6 +9,7 @@ package storytwo.methdependencies;
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.BodyDeclaration;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.TypeDeclaration;
 import com.github.javaparser.ast.expr.MethodCallExpr;
@@ -30,6 +31,8 @@ public class MethodDependenciesFinder {
      * @param dirPath path to directory to be scanned
      * @return list of dependencies. See MethodDependency class
      */
+    //todo add class name to method name for example MethodDependency.toString()
+    //todo count how many methods that are declared in dirPath are called
     public List<MethodDependency> getMethodDependencies(String dirPath) {
         //root is folder where we start scanning for classes
         SourceRoot root = new SourceRoot(Paths.get(dirPath));
@@ -45,25 +48,38 @@ public class MethodDependenciesFinder {
                         .collect(Collectors.toList());
 
         //finds all defined methods from classes that are in root folder.
-        List<MethodDeclaration> pathMethodsList = new ArrayList<>();
+        List<MethodDependency> methodsDefinedInsidePath = new ArrayList<>();
         for (CompilationUnit cu : compilationUnitList) {
             for (TypeDeclaration typeDeclaration : cu.getTypes()) {
                 List<BodyDeclaration> bodyDeclarations = typeDeclaration.getMembers();
                 for (BodyDeclaration bodyDeclaration : bodyDeclarations) {
                     if (!bodyDeclaration.isMethodDeclaration())
                         continue;
+                    if (typeDeclaration.getClass() != ClassOrInterfaceDeclaration.class)
+                        throw new RuntimeException("Unexpected Output");
+
+                    //builds class name
+                    StringBuilder className = new StringBuilder();
+                    cu.getPackageDeclaration().ifPresent(pd -> className.append(pd.getNameAsString()).append(" "));
+
+                    className.append(typeDeclaration.getNameAsString()).append(".");
+
                     MethodDeclaration methodDeclaration = (MethodDeclaration) bodyDeclaration;
-                    pathMethodsList.add(methodDeclaration);
+                    className.append(methodDeclaration.getNameAsString());
+
+                    MethodDependency methodDep = new MethodDependency(className.toString());
+                    methodDep.setMethodDeclaration(methodDeclaration);
+                    methodsDefinedInsidePath.add(methodDep);
                 }
             }
         }
 
         List<MethodDependency> methodDependencies = new LinkedList<>();
         //for every method from root folder extract every called method and add to dependencies list
-        pathMethodsList.forEach(method -> {
-            MethodDependency methodDep = new MethodDependency(method.getNameAsString());
+        methodsDefinedInsidePath.forEach(outsideMethod -> {
+            MethodDependency methodDep = new MethodDependency(outsideMethod.getCallingMethodName());
 
-            method.walk(MethodCallExpr.class, methodInside -> {
+            outsideMethod.getMethodDeclaration().walk(MethodCallExpr.class, methodInside -> {
                 methodDep.addDependency(methodInside.getNameAsString());
             });
             methodDependencies.add(methodDep);
