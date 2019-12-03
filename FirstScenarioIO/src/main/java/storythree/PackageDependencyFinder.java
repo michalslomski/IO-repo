@@ -29,7 +29,7 @@ public class PackageDependencyFinder {
         Integer dependencyCounter = 0;
 
         String projectPath=System.getProperty("user.dir");
-        List<File> listOfFiles=fr.findAllFilesInDepth(projectPath+"\\FirstScenarioIO\\src\\main\\");
+        List<File> listOfFiles=fr.findAllFilesInDepth(projectPath+"\\src\\main\\");
 
         Map<String,String> mapOfMethodBodies;
 

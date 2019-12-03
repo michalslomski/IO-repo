@@ -2,7 +2,7 @@ package storythree;
 
 import java.util.HashMap;
 
-public class DependencyObject {
+public class DependencyObject implements Readable{
 
     private String packageName;
     private String methodName;
@@ -53,5 +53,12 @@ public class DependencyObject {
 
     public void setList(HashMap<DependencyObject, Integer> list) {
         this. mapOfDependenciesForEachObject = list;
+    }
+        @Override
+    public String toString() {
+        if(methodName == "")
+            return packageName + "\n" + Integer.toString(weight);
+        else
+            return methodName + "\n" + Integer.toString(weight);
     }
 }
