@@ -16,6 +16,12 @@ public class StoryThree {
         List<DependencyObject> dependencyObjectList =  new ArrayList<>();
         PackageReader pr = new PackageReader();
         dependencyObjectList=pr.packageDependency();
+        
+        PackageDependencyFinder dependecyFinder= new PackageDependencyFinder();
+        dependencyObjectList=dependecyFinder.packageDependencyFinder(dependencyObjectList);
+
+        GraphDraw gd=new GraphDraw();
+        gd.drawGraph(dependencyObjectList);
 
 
     }
