@@ -30,7 +30,7 @@ public class GraphDraw {
         DirectedWeightedMultigraph<DependencyObject, CustomEdge> graph = g.createGraph(methods, packages);
 
         String projectPath=System.getProperty("user.dir");
-        File imgFile = new File(projectPath+"\\IO-repo-master\\FirstScenarioIO\\src\\main\\resources\\graph3.png");
+        File imgFile = new File(projectPath+"\\src\\main\\resources\\graph3.png");
 
         JGraphXAdapter<DependencyObject, CustomEdge> graphAdapter = new JGraphXAdapter<>(graph);
 
