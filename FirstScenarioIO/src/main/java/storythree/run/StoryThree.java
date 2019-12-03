@@ -1,7 +1,9 @@
 package storythree.run;
 
 import storythree.DependencyObject;
+import storythree.PackageDependencyFinder;
 import storythree.PackageReader;
+import storythree.graph.GraphDraw;
 
 import java.io.IOException;
 import java.util.ArrayList;
