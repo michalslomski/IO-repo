@@ -43,7 +43,7 @@ public class StoryTwo {
             map = methodDependencies.get(i).getDependencyMap();
             NodeFunction nodeFunction = new NodeFunction(nodeName,map,nodeWeight);
 
-            nodeFunctionsList.add(nodeFunction);
+           if(!nodeFunction.getFunctions().isEmpty()) nodeFunctionsList.add(nodeFunction);
 
         }
 
