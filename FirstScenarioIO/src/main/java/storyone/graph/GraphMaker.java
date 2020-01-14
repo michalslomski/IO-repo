@@ -34,7 +34,6 @@ public class GraphMaker {
         for (int i = 0; i < sourceVertexList.size(); i++) {
             Node n = sourceVertexList.get(i);
             CustomVertex sourceVortex = new CustomVertex(n.file.getName(),Objects.toString(n.fileSize));       //CustomVertex(Nazwa pliku w wierzcholku, rozmiar pliku)
-            System.out.println(sourceVortex);
 
             //dla każdej zależności w konkretnym Nodzie
             for (String fileName : n.dependencies.keySet()) {
