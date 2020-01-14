@@ -47,7 +47,7 @@ public class DependenciesCounter {
      * @param file where searching for dependencies
      * @return number of found class matches in file
      */
-    int findDependencies(File file, String className) throws FileNotFoundException {
+    public int findDependencies(File file, String className) throws FileNotFoundException {
 
         int dependenciesFound=0;
 	String[] split = className.split(";");
