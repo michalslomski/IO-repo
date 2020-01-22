@@ -1,5 +1,9 @@
 package storythree;
 
+/**
+ * Author: Michal Slomski
+ * Date: 09.11.2019
+ */
 import java.util.HashMap;
 
 public class DependencyObject implements Readable{

@@ -32,11 +32,8 @@ public class PackageReader {
         List<DependencyObject> objectList = new ArrayList<>();
         MethodBodyFinder mbf = new MethodBodyFinder();
         BufferedReader bf;
-        List<File> listOfFiles;
-        FileReader fileReader = new FileReader();
-        String projectPath=System.getProperty("user.dir");
-
-        listOfFiles=fileReader.findAllFilesInDepth(projectPath+"\\src\\main\\java");
+        FilesForStoryThree files= new FilesForStoryThree();
+        List<File> listOfFiles=files.getList();
         String tmp = " ";
 
         for(File nameOfFile: listOfFiles){
@@ -59,7 +56,7 @@ public class PackageReader {
                 obj= new DependencyObject(packageName,key);
                 objectList.add(obj);
             }
-            tmp=obj.getPackageName();
+
 
         }
 
