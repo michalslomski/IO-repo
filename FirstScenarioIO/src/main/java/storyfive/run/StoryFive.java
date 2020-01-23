@@ -27,4 +27,8 @@ public class StoryFive {
         //gd.drawGraph(dependencyObjectList,nodeList,123);
         gd.drawAllGraphs(dependencyObjectList,nodeList);
     }
+    
+    public static void main(String[] args) throws IOException {
+        runFifthStory();
+    }
 }
