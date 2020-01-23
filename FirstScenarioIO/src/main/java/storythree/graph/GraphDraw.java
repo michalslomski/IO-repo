@@ -52,15 +52,7 @@ public class GraphDraw {
                 j[k]=0;
                 groups.put(pack.getPackageName(), k);
             }
-
-            if(pack.getMethodName()==""&&pack.getPackageName()=="mainpackage"){
-                layout.setVertexLocation(vortex.getValue(), 300, 2);
-            }
-            else if(pack.getMethodName()==""&&(pack.getPackageName()=="storyone"||pack.getPackageName()=="storythree"||pack.getPackageName()=="storytwo")){
-                layout.setVertexLocation(vortex.getValue(), 2 + (k*250), 70);
-
-            }
-            else if(pack.getMethodName()=="") {
+            if(pack.getMethodName()=="") {
                 layout.setVertexLocation(vortex.getValue(), 2 + (k*250), 150);
                 i++;
             }else{
