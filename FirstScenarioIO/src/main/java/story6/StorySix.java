@@ -13,7 +13,7 @@ public class StorySix {
     private static final String PROJECT_PATH_PREFIX = System.getProperty("user.dir");
 
     private static final String TEST_PATH = PROJECT_PATH_PREFIX + "\\src\\main\\java\\";
-    private static final String SAVE_TO = PROJECT_PATH_PREFIX + "\\src\\main\\resources\\storysix-graph_test.png";
+    private static final String SAVE_TO = PROJECT_PATH_PREFIX + "\\src\\main\\resources\\graph6.png";
 
     public static void run6Story() throws IOException {
         GraphCreator graphCreator = new GraphCreator();

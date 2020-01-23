@@ -1,5 +1,6 @@
 package mainpackage;
 
+import story6.StorySix;
 import storyfive.run.StoryFive;
 import storyone.run.StoryOne;
 import storythree.run.StoryThree;
@@ -15,5 +16,6 @@ public class Main {
         StoryTwo.runSecondStory();
         StoryThree.runThirdStory();
         StoryFive.runFifthStory();
+        StorySix.run6Story();
     }
 }
