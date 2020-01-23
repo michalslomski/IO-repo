@@ -62,6 +62,7 @@ public class StoryTwo {
         ImageIO.write(img, "PNG", imgFile);
     }
 
-
+    public static void main(String[] args) throws IOException {
+        runSecondStory();
     }
 }

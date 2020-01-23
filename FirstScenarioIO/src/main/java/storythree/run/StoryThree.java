@@ -25,4 +25,8 @@ public class StoryThree {
         GraphDraw gd=new GraphDraw();
         gd.drawGraph(dependencyObjectList);
     }
+
+    public static void main(String[] args) throws IOException {
+        runThirdStory();
+    }
 }

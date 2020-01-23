@@ -77,5 +77,7 @@ public class StoryOne {
       ImageIO.write(img, "PNG", imgFile);
   }
 
-  }
+    public static void main(String[] args) throws IOException {
+        runFirstStory();
+    }
 }
