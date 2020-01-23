@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Project DocumentationType="html" ExporterVersion="12.2" Name="untitled" UmlVersion="2.x" Xml_structure="simple">
+  <Models>
+    <Class Id="1" Name="main"/>
+    <Class Id="2" Name="mainpackage"/>
+    <Class Id="3" Name="findAllDependencies"/>
+    <Class Id="4" Name="storyone.fileoperations"/>
+    <Class Id="6" Name="findDependencies"/>
+    <Class Id="7" Name="getImportList"/>
+    <Class Id="8" Name="setFileName"/>
+    <Class Id="11" Name="getSize"/>
+    <Class Id="12" Name="setSize"/>
+    <Class Id="14" Name="parseFile"/>
+    <Class Id="16" Name="getFileName"/>
+    <Class Id="17" Name="parsingFile"/>
+    <Class Id="18" Name="findAllFilesInDepth"/>
+    <Class Id="20" Name="getAllClassesNamesInsideProject"/>
+    <Class Id="22" Name="getDir"/>
+    <Class Id="24" Name="toString"/>
+    <Class Id="25" Name="storyone.graph"/>
+    <Class Id="36" Name="hashCode"/>
+    <Class Id="39" Name="equals"/>
+    <Class Id="57" Name="makeGraph"/>
+    <Class Id="59" Name="runFirstStory"/>
+    <Class Id="60" Name="storyone.run"/>
+    <Class Id="91" Name="graphDraw"/>
+    <Class Id="92" Name="storytwo.graph"/>
+    <Class Id="94" Name="getFunctionName"/>
+    <Class Id="96" Name="getFunctions"/>
+    <Class Id="99" Name="getCallingsCounter"/>
+    <Class Id="101" Name="getMethodDependencies"/>
+    <Class Id="102" Name="storytwo.methdependencies"/>
+    <Class Id="104" Name="makeWeights"/>
+    <Class Id="105" Name="setMethodDeclaration"/>
+    <Class Id="107" Name="getMethodDeclaration"/>
+    <Class Id="109" Name="getDependencyMap"/>
+    <Class Id="111" Name="getWeight"/>
+    <Class Id="115" Name="setWeight"/>
+    <Class Id="118" Name="getShortName"/>
+    <Class Id="120" Name="setCallingMethodFullName"/>
+    <Class Id="121" Name="setDependencyMap"/>
+    <Class Id="132" Name="incrementWeight"/>
+    <Class Id="134" Name="getCallingMethodFullName"/>
+    <Class Id="137" Name="addDependency"/>
+    <Class Id="139" Name="runSecondStory"/>
+    <Class Id="140" Name="storytwo.run"/>
+    <Class Id="142" Name="getMethodName"/>
+    <Class Id="143" Name="storythree"/>
+    <Class Id="149" Name="setMethodName"/>
+    <Class Id="155" Name="setPackageName"/>
+    <Class Id="156" Name="setList"/>
+    <Class Id="157" Name="setCyclomaticComplexity"/>
+    <Class Id="158" Name="getCyclomaticComplexity"/>
+    <Class Id="159" Name="getList"/>
+    <Class Id="162" Name="setMapOfDependenciesForEachObject"/>
+    <Class Id="163" Name="getMapOfDependenciesForEachObject"/>
+    <Class Id="175" Name="getPackageName"/>
+    <Class Id="182" Name="visit"/>
+    <Class Id="184" Name="getMethodsBodies"/>
+    <Class Id="187" Name="packageDependencyFinder"/>
+    <Class Id="189" Name="packageDependency"/>
+    <Class Id="210" Name="createGraph"/>
+    <Class Id="211" Name="storythree.graph"/>
+    <Class Id="213" Name="drawGraph"/>
+    <Class Id="215" Name="getMethods"/>
+    <Class Id="217" Name="getPackages"/>
+    <Class Id="219" Name="runThirdStory"/>
+    <Class Id="220" Name="storythree.run"/>
+    <Usage From="2" Id="222" To="1"/>
+    <Usage From="3" Id="223" To="5"/>
+    <Usage From="4" Id="224" To="3"/>
+    <Usage From="8" Id="225" To="9"/>
+    <Usage From="8" Id="226" To="10"/>
+    <Usage From="12" Id="227" To="13"/>
+    <Usage From="14" Id="228" To="15"/>
+    <Usage From="18" Id="229" To="19"/>
+    <Usage From="20" Id="230" To="21"/>
+    <Usage From="22" Id="231" To="23"/>
+    <Usage From="24" Id="232" To="122"/>
+    <Usage From="24" Id="233" To="31"/>
+    <Usage From="24" Id="234" To="53"/>
+    <Usage From="24" Id="235" To="70"/>
+    <Usage From="24" Id="236" To="84"/>
+    <Usage From="24" Id="237" To="205"/>
+    <Usage From="24" Id="238" To="50"/>
+    <Usage From="24" Id="239" To="71"/>
+    <Usage From="24" Id="240" To="88"/>
+    <Usage From="24" Id="241" To="47"/>
+    <Usage From="24" Id="242" To="33"/>
+    <Usage From="24" Id="243" To="167"/>
+    <Usage From="24" Id="244" To="200"/>
+    <Usage From="24" Id="245" To="82"/>
+    <Usage From="24" Id="246" To="207"/>
+    <Usage From="24" Id="247" To="49"/>
+    <Usage From="24" Id="248" To="62"/>
+    <Usage From="24" Id="249" To="56"/>
+    <Usage From="24" Id="250" To="204"/>
+    <Usage From="24" Id="251" To="90"/>
+    <Usage From="24" Id="252" To="81"/>
+    <Usage From="24" Id="253" To="209"/>
+    <Usage From="24" Id="254" To="129"/>
+    <Usage From="24" Id="255" To="87"/>
+    <Usage From="24" Id="256" To="123"/>
+    <Usage From="24" Id="257" To="168"/>
+    <Usage From="24" Id="258" To="173"/>
+    <Usage From="24" Id="259" To="66"/>
+    <Usage From="24" Id="260" To="131"/>
+    <Usage From="24" Id="261" To="26"/>
+    <Usage From="24" Id="262" To="208"/>
+    <Usage From="24" Id="263" To="67"/>
+    <Usage From="24" Id="264" To="203"/>
+    <Usage From="24" Id="265" To="127"/>
+    <Usage From="24" Id="266" To="28"/>
+    <Usage From="24" Id="267" To="32"/>
+    <Usage From="24" Id="268" To="171"/>
+    <Usage From="24" Id="269" To="34"/>
+    <Usage From="24" Id="270" To="48"/>
+    <Usage From="24" Id="271" To="89"/>
+    <Usage From="24" Id="272" To="165"/>
+    <Usage From="24" Id="273" To="174"/>
+    <Usage From="24" Id="274" To="86"/>
+    <Usage From="24" Id="275" To="35"/>
+    <Usage From="24" Id="276" To="83"/>
+    <Usage From="24" Id="277" To="27"/>
+    <Usage From="24" Id="278" To="65"/>
+    <Usage From="24" Id="279" To="55"/>
+    <Usage From="24" Id="280" To="64"/>
+    <Usage From="24" Id="281" To="85"/>
+    <Usage From="24" Id="282" To="126"/>
+    <Usage From="24" Id="283" To="51"/>
+    <Usage From="24" Id="284" To="202"/>
+    <Usage From="24" Id="285" To="52"/>
+    <Usage From="24" Id="286" To="54"/>
+    <Usage From="24" Id="287" To="68"/>
+    <Usage From="24" Id="288" To="170"/>
+    <Usage From="24" Id="289" To="206"/>
+    <Usage From="24" Id="290" To="124"/>
+    <Usage From="24" Id="291" To="29"/>
+    <Usage From="24" Id="292" To="63"/>
+    <Usage From="24" Id="293" To="69"/>
+    <Usage From="24" Id="294" To="130"/>
+    <Usage From="24" Id="295" To="166"/>
+    <Usage From="24" Id="296" To="169"/>
+    <Usage From="24" Id="297" To="128"/>
+    <Usage From="24" Id="298" To="201"/>
+    <Usage From="24" Id="299" To="125"/>
+    <Usage From="24" Id="300" To="172"/>
+    <Usage From="24" Id="301" To="30"/>
+    <Usage From="25" Id="302" To="24"/>
+    <Usage From="36" Id="303" To="38"/>
+    <Usage From="36" Id="304" To="72"/>
+    <Usage From="36" Id="305" To="37"/>
+    <Usage From="36" Id="306" To="73"/>
+    <Usage From="39" Id="307" To="40"/>
+    <Usage From="39" Id="308" To="45"/>
+    <Usage From="39" Id="309" To="43"/>
+    <Usage From="39" Id="310" To="77"/>
+    <Usage From="39" Id="311" To="74"/>
+    <Usage From="39" Id="312" To="79"/>
+    <Usage From="39" Id="313" To="80"/>
+    <Usage From="39" Id="314" To="42"/>
+    <Usage From="39" Id="315" To="76"/>
+    <Usage From="39" Id="316" To="41"/>
+    <Usage From="39" Id="317" To="78"/>
+    <Usage From="39" Id="318" To="46"/>
+    <Usage From="39" Id="319" To="44"/>
+    <Usage From="39" Id="320" To="75"/>
+    <Usage From="57" Id="321" To="58"/>
+    <Usage From="59" Id="322" To="61"/>
+    <Usage From="60" Id="323" To="59"/>
+    <Usage From="91" Id="324" To="93"/>
+    <Usage From="92" Id="325" To="91"/>
+    <Usage From="94" Id="326" To="95"/>
+    <Usage From="96" Id="327" To="98"/>
+    <Usage From="96" Id="328" To="97"/>
+    <Usage From="99" Id="329" To="100"/>
+    <Usage From="101" Id="330" To="103"/>
+    <Usage From="102" Id="331" To="101"/>
+    <Usage From="105" Id="332" To="106"/>
+    <Usage From="107" Id="333" To="108"/>
+    <Usage From="109" Id="334" To="110"/>
+    <Usage From="111" Id="335" To="113"/>
+    <Usage From="111" Id="336" To="151"/>
+    <Usage From="111" Id="337" To="150"/>
+    <Usage From="111" Id="338" To="114"/>
+    <Usage From="111" Id="339" To="152"/>
+    <Usage From="111" Id="340" To="112"/>
+    <Usage From="115" Id="341" To="154"/>
+    <Usage From="115" Id="342" To="117"/>
+    <Usage From="115" Id="343" To="153"/>
+    <Usage From="115" Id="344" To="116"/>
+    <Usage From="118" Id="345" To="119"/>
+    <Usage From="132" Id="346" To="133"/>
+    <Usage From="134" Id="347" To="135"/>
+    <Usage From="134" Id="348" To="136"/>
+    <Usage From="137" Id="349" To="138"/>
+    <Usage From="139" Id="350" To="141"/>
+    <Usage From="140" Id="351" To="139"/>
+    <Usage From="142" Id="352" To="146"/>
+    <Usage From="142" Id="353" To="194"/>
+    <Usage From="142" Id="354" To="195"/>
+    <Usage From="142" Id="355" To="147"/>
+    <Usage From="142" Id="356" To="192"/>
+    <Usage From="142" Id="357" To="144"/>
+    <Usage From="142" Id="358" To="145"/>
+    <Usage From="142" Id="359" To="148"/>
+    <Usage From="142" Id="360" To="191"/>
+    <Usage From="142" Id="361" To="193"/>
+    <Usage From="143" Id="362" To="142"/>
+    <Usage From="159" Id="363" To="160"/>
+    <Usage From="159" Id="364" To="161"/>
+    <Usage From="159" Id="365" To="180"/>
+    <Usage From="159" Id="366" To="181"/>
+    <Usage From="163" Id="367" To="164"/>
+    <Usage From="175" Id="368" To="176"/>
+    <Usage From="175" Id="369" To="177"/>
+    <Usage From="175" Id="370" To="197"/>
+    <Usage From="175" Id="371" To="178"/>
+    <Usage From="175" Id="372" To="198"/>
+    <Usage From="175" Id="373" To="196"/>
+    <Usage From="175" Id="374" To="179"/>
+    <Usage From="175" Id="375" To="199"/>
+    <Usage From="182" Id="376" To="183"/>
+    <Usage From="184" Id="377" To="185"/>
+    <Usage From="184" Id="378" To="186"/>
+    <Usage From="187" Id="379" To="188"/>
+    <Usage From="189" Id="380" To="190"/>
+    <Usage From="210" Id="381" To="212"/>
+    <Usage From="211" Id="382" To="210"/>
+    <Usage From="213" Id="383" To="214"/>
+    <Usage From="215" Id="384" To="216"/>
+    <Usage From="217" Id="385" To="218"/>
+    <Usage From="219" Id="386" To="221"/>
+    <Usage From="220" Id="387" To="219"/>
+  </Models>
+</Project>
