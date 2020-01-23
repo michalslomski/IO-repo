@@ -24,7 +24,5 @@ public class StoryThree {
 
         GraphDraw gd=new GraphDraw();
         gd.drawGraph(dependencyObjectList);
-
-
     }
 }

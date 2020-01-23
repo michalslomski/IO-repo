@@ -11,12 +11,14 @@ import java.io.IOException;
 
 //TODO graph has
 public class StorySix {
-    private static final String TEST_PATH = "D:\\Studia\\sem_5\\IO\\IO-repo-actual\\FirstScenarioIO\\src\\main\\java\\";
-    private static final String SAVE_TO = "D:\\Studia\\sem_5\\IO\\IO-repo-actual\\FirstScenarioIO\\src\\main\\resources\\storysix-graph.png";
+    private static final String PROJECT_PATH_PREFIX = System.getProperty("user.dir");
+
+    private static final String TEST_PATH = PROJECT_PATH_PREFIX + "\\src\\main\\java\\";
+    private static final String SAVE_TO = PROJECT_PATH_PREFIX + "\\src\\main\\resources\\storysix-graph_test.png";
 
     public static void run6Story() throws IOException {
-        GraphCreator graphCreator =new GraphCreator();
-        GraphContainer graph= graphCreator.makeGraph(TEST_PATH);
+        GraphCreator graphCreator = new GraphCreator();
+        GraphContainer graph = graphCreator.makeGraph(TEST_PATH);
         graph.createPNG(SAVE_TO);
     }
 

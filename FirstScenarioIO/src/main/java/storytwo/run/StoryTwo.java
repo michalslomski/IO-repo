@@ -25,7 +25,7 @@ public class StoryTwo {
     public static void runSecondStory() throws IOException {
 
         String projectPath = System.getProperty("user.dir");
-        String path = projectPath+"\\FirstScenarioIO\\src\\main\\java";
+        String path = projectPath+"\\src\\main\\java";
 
         MethodDependenciesFinder dependenciesFinder = new MethodDependenciesFinder();
         List<MethodDependency> methodDependencies = new LinkedList<>();
@@ -50,7 +50,7 @@ public class StoryTwo {
         GraphDraw g = new GraphDraw();
         DirectedWeightedMultigraph<CustomVertex, CustomEdge> graph = g.graphDraw(nodeFunctionsList);
 
-        File imgFile = new File(projectPath+"\\FirstScenarioIO\\src\\main\\resources\\graph2.png");
+        File imgFile = new File(projectPath+"\\src\\main\\resources\\graph2.png");
 
         JGraphXAdapter<CustomVertex, CustomEdge> graphAdapter = new JGraphXAdapter<>(graph);
         mxIGraphLayout layout = new mxHierarchicalLayout(graphAdapter);
@@ -60,6 +60,7 @@ public class StoryTwo {
 
         BufferedImage img = mxCellRenderer.createBufferedImage(graphAdapter, null, 1.4, Color.WHITE, true, null);
         ImageIO.write(img, "PNG", imgFile);
+    }
 
 
     }

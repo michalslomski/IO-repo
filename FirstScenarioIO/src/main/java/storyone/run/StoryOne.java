@@ -75,6 +75,7 @@ public class StoryOne {
 
       BufferedImage img = mxCellRenderer.createBufferedImage(graphAdapter, null, 1.4, Color.WHITE, true, null);
       ImageIO.write(img, "PNG", imgFile);
+  }
 
   }
 }
