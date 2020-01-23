@@ -1,8 +1,8 @@
 package story6.graph;
-/*
-Author: BeGieU
-Date: 04.12.2019
-*/
+/**
+ Author: Marcin Pływacz
+ Date: 04.12.2019
+ */
 
 import story6.dependencies.Dependency;
 import story6.dependencies.MethodDependenciesFinder;

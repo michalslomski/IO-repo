@@ -1,8 +1,8 @@
 package story6.dependencies;
-/*
-Author: BeGieU
-Date: 04.12.2019
-*/
+/**
+ Author: Marcin Pływacz
+ Date: 04.12.2019
+ */
 
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;

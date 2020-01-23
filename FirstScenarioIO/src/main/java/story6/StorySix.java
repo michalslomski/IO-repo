@@ -1,6 +1,6 @@
 package story6;
-/*
-Author: BeGieU
+/**
+Author: Marcin Pływacz
 Date: 04.12.2019
 */
 
@@ -9,7 +9,6 @@ import story6.graph.GraphCreator;
 
 import java.io.IOException;
 
-//TODO graph has
 public class StorySix {
     private static final String PROJECT_PATH_PREFIX = System.getProperty("user.dir");
 
