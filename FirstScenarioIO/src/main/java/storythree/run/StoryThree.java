@@ -1,5 +1,6 @@
 package storythree.run;
 
+import storyseven.CyclomaticComplexityFinder;
 import storythree.DependencyObject;
 import storythree.PackageDependencyFinder;
 import storythree.PackageReader;
@@ -21,6 +22,9 @@ public class StoryThree {
         
         PackageDependencyFinder dependecyFinder= new PackageDependencyFinder();
         dependencyObjectList=dependecyFinder.packageDependencyFinder(dependencyObjectList);
+
+        CyclomaticComplexityFinder complexityFinder = new CyclomaticComplexityFinder();
+        dependencyObjectList=complexityFinder.find(dependencyObjectList);
 
         GraphDraw gd=new GraphDraw();
         gd.drawGraph(dependencyObjectList);

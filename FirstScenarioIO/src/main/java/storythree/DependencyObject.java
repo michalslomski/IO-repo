@@ -12,11 +12,13 @@ public class DependencyObject implements Readable{
     private String methodName;
     private Integer weight;
     private HashMap<DependencyObject,Integer> mapOfDependenciesForEachObject = new HashMap<>();
+    private Integer cyclomaticComplexity;
 
     public DependencyObject(String packageName, String methodName) {
         this.packageName = packageName;
         this.methodName = methodName;
         this.weight = 0;
+        this.cyclomaticComplexity=0;
     }
 
     public String getPackageName() {
@@ -60,9 +62,17 @@ public class DependencyObject implements Readable{
     }
         @Override
     public String toString() {
-        if(methodName == "")
-            return packageName + "\n" + Integer.toString(weight);
+        if(methodName != "" && cyclomaticComplexity!=null)
+            return methodName + "\n" + Integer.toString(weight) + "\n" + "CC: " +cyclomaticComplexity;
         else
-            return methodName + "\n" + Integer.toString(weight);
+            return packageName + "\n" + Integer.toString(weight);
+    }
+
+    public Integer getCyclomaticComplexity() {
+        return cyclomaticComplexity;
+    }
+
+    public void setCyclomaticComplexity(Integer cyclomaticComplexity) {
+        this.cyclomaticComplexity = cyclomaticComplexity;
     }
 }

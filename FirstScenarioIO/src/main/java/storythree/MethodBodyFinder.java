@@ -6,6 +6,7 @@ package storythree;
  */
 
 import com.github.javaparser.JavaParser;
+import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
@@ -34,7 +35,7 @@ public class MethodBodyFinder {
         CompilationUnit cu = null;
 
         try (FileInputStream in = new FileInputStream(javaFilePath)) {
-            cu = JavaParser.parse(in);
+            cu = StaticJavaParser.parse(in);
         }
         MethodVisitor mv = new MethodVisitor();
         mv.visit(cu, null);
